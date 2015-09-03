@@ -2,8 +2,10 @@
 # http://git-scm.com/docs/gitignore
 
 .DS_Store
+npm-debug.log
 node_modules/
 platforms/
 plugins/
 src/modules/config.js
 www/lib/
+www/css/

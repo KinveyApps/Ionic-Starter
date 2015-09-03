@@ -1,5 +1,5 @@
 {
-  "name": "Kinvey",
+  "name": "Kinvey Starter",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#v1.1.0",

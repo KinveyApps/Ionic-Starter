@@ -110,4 +110,6 @@ app.run(function($ionicPlatform, $kinvey, $rootScope, $state, KinveyConfig, Auth
       StatusBar.styleDefault();
     }
   });
+
+  $state.go('welcome');
 });
