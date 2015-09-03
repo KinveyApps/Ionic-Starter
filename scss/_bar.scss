@@ -1,0 +1,15 @@
+.bar {
+  &.bar-kinvey {
+    @include bar-style($bar-kinvey-bg, $bar-kinvey-border, $bar-kinvey-text);
+    &.bar-footer{
+      background-image: linear-gradient(180deg, $bar-kinvey-border, $bar-kinvey-border 50%, transparent 50%);
+    }
+  }
+}
+
+.bar-kinvey {
+  .button {
+    @include button-style($bar-kinvey-bg, $bar-kinvey-border, $bar-kinvey-active-bg, $bar-kinvey-active-border, $bar-kinvey-text);
+    @include button-clear(#fff, $bar-title-font-size);
+  }
+}

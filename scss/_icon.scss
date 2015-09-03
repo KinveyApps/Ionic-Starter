@@ -1,0 +1,9 @@
+.icon, .ion {
+  &.kinvey {
+    color: $icon-kinvey-text;
+  }
+
+  &.larger {
+    font-size: 120px;
+  }
+}

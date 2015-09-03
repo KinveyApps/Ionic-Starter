@@ -1,0 +1,7 @@
+.button {
+  &.button-kinvey {
+    @include button-style($button-kinvey-bg, $button-kinvey-border, $button-kinvey-active-bg, $button-kinvey-active-border, $button-kinvey-text);
+    @include button-clear($button-kinvey-border);
+    @include button-outline($button-kinvey-border);
+  }
+}

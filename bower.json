@@ -1,0 +1,9 @@
+{
+  "name": "Kinvey",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#v1.1.0",
+    "Kinvey": "^1.4.3",
+    "babel-polyfill": "~0.0.1"
+  }
+}

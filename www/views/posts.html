@@ -1,0 +1,11 @@
+<ion-view view-title="Posts">
+  <ion-content>
+    <ion-list>
+      <ion-item collection-repeat="post in vm.posts" class="post">
+        <h2>{{post.title}}</h2>
+        <p>{{post.text}}</p>
+        <p class="name">{{post.name}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
