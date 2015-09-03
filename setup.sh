@@ -54,11 +54,3 @@ ionic platform add android
 
 message_info "Adding iOS platform..."
 ionic platform add ios
-
-# ----
-# Prepare Platforms
-message_info "Syncing 'www' with Android platform..."
-ionic prepare android
-
-message_info "Syncing 'www' with iOS platform..."
-ionic prepare ios

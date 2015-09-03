@@ -1,4 +1,4 @@
-An Kinvey starter application built on the Ionic framework.
+A Kinvey starter application built on the Ionic framework.
 
 ## Features
 * Login a user
