@@ -7,7 +7,7 @@ A Kinvey starter application built on the Ionic framework.
 
 ## Setup
 
-1. Clone the repo and open a terminal at the location you cloned the repo.
+1. Clone the repo.
 2. Excecute `npm install` to follow the instructions.
 3. Create a user using the [console](http://console.kinvey.com) for your application.
 4. Create a 'posts' collection for your Kinvey application using the [console](http://console.kinvey.com) and import the provided 'posts.json' file.
