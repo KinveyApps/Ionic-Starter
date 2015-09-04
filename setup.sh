@@ -50,7 +50,13 @@ fi
 # 'phonegap platforms'
 
 message_info "Adding Android platform..."
-ionic platform add android
+./node_modules/.bin/ionic platform add android
 
 message_info "Adding iOS platform..."
-ionic platform add ios
+./node_modules/.bin/ionic platform add ios
+
+# ----
+# Install bower components
+
+message_info "Install Bower components..."
+./node_modules/.bin/bower install
