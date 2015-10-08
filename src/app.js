@@ -1,6 +1,7 @@
 require('./modules/config');
 require('./modules/controllers');
 require('./modules/services');
+require('./modules/angular-ios9-uiwebview.patch');
 let initialized = false;
 
 const app = angular.module('Kinvey', [
@@ -8,7 +9,8 @@ const app = angular.module('Kinvey', [
   'kinvey',
   'config',
   'controllers',
-  'services'
+  'services',
+  'ngIOS9UIWebViewPatch'
 ]);
 
 app.config(function($logProvider) {

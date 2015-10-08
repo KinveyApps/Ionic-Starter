@@ -4,9 +4,10 @@
 require('./modules/config');
 require('./modules/controllers');
 require('./modules/services');
+require('./modules/angular-ios9-uiwebview.patch');
 var initialized = false;
 
-var app = angular.module('Kinvey', ['ionic', 'kinvey', 'config', 'controllers', 'services']);
+var app = angular.module('Kinvey', ['ionic', 'kinvey', 'config', 'controllers', 'services', 'ngIOS9UIWebViewPatch']);
 
 app.config(function ($logProvider) {
   'ngInject';
@@ -107,7 +108,7 @@ app.run(function ($ionicPlatform, $kinvey, $rootScope, $state, KinveyConfig, Aut
   $state.go('welcome');
 });
 
-},{"./modules/config":5,"./modules/controllers":6,"./modules/services":7}],2:[function(require,module,exports){
+},{"./modules/angular-ios9-uiwebview.patch":5,"./modules/config":6,"./modules/controllers":7,"./modules/services":8}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -179,16 +180,93 @@ exports['default'] = WelcomeCtrl;
 module.exports = exports['default'];
 
 },{}],5:[function(require,module,exports){
+/**
+ * ==================  angular-ios9-uiwebview.patch.js v1.1.1 ==================
+ *
+ * This patch works around iOS9 UIWebView regression that causes infinite digest
+ * errors in Angular.
+ *
+ * The patch can be applied to Angular 1.2.0 – 1.4.5. Newer versions of Angular
+ * have the workaround baked in.
+ *
+ * To apply this patch load/bundle this file with your application and add a
+ * dependency on the "ngIOS9UIWebViewPatch" module to your main app module.
+ *
+ * For example:
+ *
+ * ```
+ * angular.module('myApp', ['ngRoute'])`
+ * ```
+ *
+ * becomes
+ *
+ * ```
+ * angular.module('myApp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
+ * ```
+ *
+ *
+ * More info:
+ * - https://openradar.appspot.com/22186109
+ * - https://github.com/angular/angular.js/issues/12241
+ * - https://github.com/driftyco/ionic/issues/4082
+ *
+ *
+ * @license AngularJS
+ * (c) 2010-2015 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+
+'use strict';
+
+angular.module('ngIOS9UIWebViewPatch', ['ng']).config(['$provide', function ($provide) {
+  $provide.decorator('$browser', ['$delegate', '$window', function ($delegate, $window) {
+    function isIOS9UIWebView(userAgent) {
+      return (/(iPhone|iPad|iPod).* OS 9_\d/.test(userAgent) && !/Version\/9\./.test(userAgent)
+      );
+    }
+
+    function applyIOS9Shim(browser) {
+      var pendingLocationUrl = null;
+      var originalUrlFn = browser.url;
+
+      browser.url = function () {
+        if (arguments.length) {
+          pendingLocationUrl = arguments[0];
+          return originalUrlFn.apply(browser, arguments);
+        }
+
+        return pendingLocationUrl || originalUrlFn.apply(browser, arguments);
+      };
+
+      function clearPendingLocationUrl() {
+        pendingLocationUrl = null;
+      }
+
+      window.addEventListener('popstate', clearPendingLocationUrl, false);
+      window.addEventListener('hashchange', clearPendingLocationUrl, false);
+
+      return browser;
+    }
+
+    if (isIOS9UIWebView($window.navigator.userAgent)) {
+      return applyIOS9Shim($delegate);
+    }
+
+    return $delegate;
+  }]);
+}]);
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _module = angular.module('config', []);
 _module.constant('KinveyConfig', {
-  appKey: 'kid_byGoHmnX2',
-  appSecret: '9b8431f34279434bbedaceb2fe6b8fb5',
-  apiHostName: 'https://baas.kinvey.com'
+  appKey: 'kid_bkhuDJ_k8e',
+  appSecret: '104a37def8b44820a19fcb7327e7e7d3',
+  apiHostName: 'https://abcd09c7.ngrok.io'
 });
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var _module = angular.module('controllers', []);
@@ -196,14 +274,14 @@ _module.controller('MenuCtrl', require('../controllers/menu'));
 _module.controller('PostsCtrl', require('../controllers/posts'));
 _module.controller('WelcomeCtrl', require('../controllers/welcome'));
 
-},{"../controllers/menu":2,"../controllers/posts":3,"../controllers/welcome":4}],7:[function(require,module,exports){
+},{"../controllers/menu":2,"../controllers/posts":3,"../controllers/welcome":4}],8:[function(require,module,exports){
 'use strict';
 
 var _module = angular.module('services', []);
 _module.service('Auth', require('../services/auth'));
 _module.service('DataStore', require('../services/datastore'));
 
-},{"../services/auth":8,"../services/datastore":9}],8:[function(require,module,exports){
+},{"../services/auth":9,"../services/datastore":10}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -310,7 +388,7 @@ var Auth = (function () {
 exports['default'] = Auth;
 module.exports = exports['default'];
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

@@ -9,3 +9,5 @@ plugins/
 src/modules/config.js
 www/lib/
 www/css/
+!www/css/ionic.app.css
+!www/css/ionic.app.min.css
