@@ -2,7 +2,7 @@
   "name": "Kinvey Starter",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#v1.0.1",
-    "Kinvey": "^1.5.0"
+    "ionic": "^1.0.0",
+    "Kinvey": "^1.6.0"
   }
 }
