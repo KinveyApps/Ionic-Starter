@@ -1,4 +1,4 @@
-class WelcomeCtrl {
+export default class WelcomeCtrl {
   constructor($state) {
     'ngInject';
 
@@ -9,5 +9,3 @@ class WelcomeCtrl {
     this.$state.go('posts');
   }
 }
-
-export default WelcomeCtrl;

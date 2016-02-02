@@ -1,4 +1,4 @@
-class Auth {
+export default class Auth {
   constructor($ionicModal, $ionicPopup, $rootScope, $kinvey) {
     'ngInject';
 
@@ -82,5 +82,3 @@ class Auth {
     return Promise.resolve();
   }
 }
-
-export default Auth;

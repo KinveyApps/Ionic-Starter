@@ -1,4 +1,4 @@
-class DataStore {
+export default class DataStore {
   constructor($kinvey) {
     'ngInject';
 
@@ -9,5 +9,3 @@ class DataStore {
     return this.$kinvey.DataStore.find(collection, query, options);
   }
 }
-
-export default DataStore;
