@@ -42,7 +42,9 @@
   ],
   "scripts": {
     "postinstall": "node setup.js",
-    "start": "ionic serve"
+    "start": "npm run compile && npm run serve",
+    "compile": "gulp compile",
+    "serve": "ionic serve"
   },
   "engines": {
     "node": ">=0.12"
