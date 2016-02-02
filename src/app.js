@@ -5,7 +5,7 @@ require('./modules/services');
 require('./modules/angular-ios9-uiwebview.patch');
 let initialized = false;
 
-const app = angular.module('Kinvey', [
+const app = angular.module('KinveyIonicStarter', [
   'ionic',
   'kinvey',
   'config',
