@@ -53,7 +53,7 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('compile', ['build', 'sass'], function() {});
+gulp.task('compile', ['build', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch(paths.src, ['build']);
