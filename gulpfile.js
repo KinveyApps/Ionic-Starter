@@ -27,7 +27,7 @@ gulp.task('clean', function(done) {
 
 function bundle() {
   return browserify('./src/app.js')
-    .transform(babelify)
+    .transform(babelify, { presets: ['es2015', 'stage-2'] })
     .bundle()
     .pipe(plumber())
     .on('error', function(err) { gutil.log('Error: ' + err.message); })
