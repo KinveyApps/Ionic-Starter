@@ -1,3 +1,6 @@
+import Auth from '../services/auth';
+import DataStore from '../services/datastore';
+
 const module = angular.module('services', []);
-module.service('Auth', require('../services/auth'));
-module.service('DataStore', require('../services/datastore'));
+module.service('Auth', Auth);
+module.service('DataStore', DataStore);

@@ -1,4 +1,8 @@
+import MenuCtrl from '../controllers/menu';
+import PostsCtrl from '../controllers/posts';
+import WelcomCtrl from '../controllers/welcome';
+
 const module = angular.module('controllers', []);
-module.controller('MenuCtrl', require('../controllers/menu'));
-module.controller('PostsCtrl', require('../controllers/posts'));
-module.controller('WelcomeCtrl', require('../controllers/welcome'));
+module.controller('MenuCtrl', MenuCtrl);
+module.controller('PostsCtrl', PostsCtrl);
+module.controller('WelcomeCtrl', WelcomCtrl);
