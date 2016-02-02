@@ -2,7 +2,9 @@
   "name": "KinveyStarter",
   "version": "1.0.3",
   "description": "A Kinvey Ionic Starter app",
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.3.14"
+  },
   "devDependencies": {
     "async": "^1.5.0",
     "babel-preset-es2015": "^6.3.13",

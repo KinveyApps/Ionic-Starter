@@ -1,3 +1,4 @@
+require('babel-polyfill/dist/polyfill');
 require('./modules/config');
 require('./modules/controllers');
 require('./modules/services');
