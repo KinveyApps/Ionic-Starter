@@ -75,8 +75,8 @@ angular.module('starter', [
 
 .config(function($kinveyProvider, $stateProvider, $urlRouterProvider) {
   $kinveyProvider.init({
-    appKey: '<app-key>',
-    appSecret: '<app-secret>'
+    appKey: 'kid_byGoHmnX2',
+    appSecret: '9b8431f34279434bbedaceb2fe6b8fb5'
   });
 
   $stateProvider
