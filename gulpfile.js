@@ -1,49 +1,22 @@
-/* eslint-disable */
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
+var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
-var plumber = require('gulp-plumber');
-var browserify = require('browserify');
-var watchify = require('watchify');
-var babelify = require('babelify');
-var source = require('vinyl-source-stream');
-var _ = require('lodash');
-var rimraf = require('rimraf');
 
 var paths = {
-  src: ['./src/**/*.js'],
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['build', 'sass']);
-
-gulp.task('clean', function(done) {
-  rimraf('./www/js/', done);
-});
-
-function bundle() {
-  return browserify('./src/app.js')
-    .transform(babelify, { presets: ['es2015', 'stage-2'] })
-    .bundle()
-    .pipe(plumber())
-    .on('error', function(err) { gutil.log('Error: ' + err.message); })
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./www/js/'));
-}
-
-gulp.task('build', ['clean'], function() {
-  return bundle();
-});
+gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass())
+    .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
@@ -53,10 +26,7 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('compile', ['build', 'sass']);
-
 gulp.task('watch', function() {
-  gulp.watch(paths.src, ['build']);
   gulp.watch(paths.sass, ['sass']);
 });
 

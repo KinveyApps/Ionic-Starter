@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Starter Login</h1>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <p class="text-center">
+            <span class="assertive">{{errorMessage}}</span>
+          </p>
+          <button class="button button-block button-positive" type="submit">Login</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

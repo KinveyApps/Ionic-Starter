@@ -1,8 +1,8 @@
 {
   "name": "Kinvey Starter",
   "private": "true",
-  "dependencies": {
-    "ionic": "^1.0.0",
-    "Kinvey": "^1.6.0"
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.0",
+    "kinvey-angular-sdk": "3.0.0-beta.18"
   }
 }

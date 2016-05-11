@@ -1,13 +1,4 @@
 {
-  "name": "Kinvey",
-  "app_id": "",
-  "gulpStartupTasks": [
-    "build",
-    "sass",
-    "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
-  ]
+  "name": "Ionic2",
+  "app_id": ""
 }
