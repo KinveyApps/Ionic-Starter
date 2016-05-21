@@ -75,8 +75,8 @@ angular.module('starter', [
 
 .config(function($kinveyProvider, $stateProvider, $urlRouterProvider) {
   $kinveyProvider.init({
-    appKey: '<app-key>',
-    appSecret: '<app-secret>'
+    appKey: 'kid_byGoHmnX2',
+    appSecret: '9b8431f34279434bbedaceb2fe6b8fb5'
   });
 
   $stateProvider
@@ -112,11 +112,18 @@ angular.module('starter', [
           templateUrl: 'templates/books.html',
           controller: 'BooksCtrl',
           resolve: {
-            books: function($kinvey) {
-              var store = $kinvey.DataStore.getInstance('books');
-              return store.find().then(function(response) {
-                return response.cache;
+            books: function($kinvey, $q) {
+              var deferred = $q.defer();
+              var store = $kinvey.DataStore.collection('books');
+              var books = [];
+
+              store.find().subscribe(function(data) {
+                books = data;
+              }, deferred.reject, function() {
+                deferred.resolve(books);
               });
+
+              return deferred.promise;
             }
           }
         }

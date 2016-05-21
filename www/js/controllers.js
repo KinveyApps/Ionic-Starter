@@ -5,14 +5,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('BooksCtrl', function(books, $scope, $kinvey) {
-  var store = $kinvey.DataStore.getInstance('books');
+  var store = $kinvey.DataStore.collection('books');
   $scope.books = books;
 
   $scope.refresh = function() {
-    store.find().then(function(response) {
-      return response.networkPromise;
-    }).then(function(books) {
-      $scope.books = books;
+    store.find().subscribe(function(data) {
+      $scope.books = data;
       $scope.$digest();
     });
   };
