@@ -59,6 +59,7 @@ angular.module('starter', [
   });
 
   $ionicPlatform.ready(function() {
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -75,8 +76,8 @@ angular.module('starter', [
 
 .config(function($kinveyProvider, $stateProvider, $urlRouterProvider) {
   $kinveyProvider.init({
-    appKey: 'kid_byGoHmnX2',
-    appSecret: '9b8431f34279434bbedaceb2fe6b8fb5'
+    appKey: '<appKey>',
+    appSecret: '<appSecret>'
   });
 
   $stateProvider
@@ -110,22 +111,7 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'templates/books.html',
-          controller: 'BooksCtrl',
-          resolve: {
-            books: function($kinvey, $q) {
-              var deferred = $q.defer();
-              var store = $kinvey.DataStore.collection('books');
-              var books = [];
-
-              store.find().subscribe(function(data) {
-                books = data;
-              }, deferred.reject, function() {
-                deferred.resolve(books);
-              });
-
-              return deferred.promise;
-            }
-          }
+          controller: 'BooksCtrl'
         }
       }
     });
